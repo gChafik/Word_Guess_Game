@@ -1,5 +1,6 @@
 let numberOfGuessesRemainig = 9;
 let wins = 0;
+let losses = 0;
 let userInputList = [];
 let wordArrMasked = [];
 let word = '';
@@ -30,6 +31,7 @@ $(document).ready(function() {
     document.querySelector("#number_of_guesses_remaining").innerHTML = numberOfGuessesRemainig;
     //Populate number of wins
     document.querySelector("#wins").innerHTML = wins;
+    document.querySelector("#losses").innerHTML = losses;
 
     document.onkeydown = function(event){
     let userInput = event.key.toLowerCase();
@@ -55,7 +57,9 @@ $(document).ready(function() {
                 numberOfGuessesRemainig--;
                 //if the number of guesses has been exhaused and the word has not been guessed
                 if(numberOfGuessesRemainig === 0){
+                    losses++;
                     alert("You Lose! The Animal is: " + word + "  " + "Play Again!");
+                    document.querySelector("#losses").innerHTML = losses;
                     reset();
                     break;
                 }
